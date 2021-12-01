@@ -21,6 +21,7 @@
 
 #include "luaregex.h"
 #include <iostream>
+#include <regex>
 
 Cluaregex::Cluaregex(sol::this_state L)
     : m_oState(L)
@@ -28,7 +29,17 @@ Cluaregex::Cluaregex(sol::this_state L)
 
 }
 
-void Cluaregex::OPrint(const std::string& strInfo)
+std::vector<std::string> Cluaregex::match(const std::string& strSrc, const std::string& reg)
 {
-    m_oState["print"].call(strInfo);
+    std::regex e(reg, std::regex::ECMAScript);
+
+    std::smatch cm;
+    std::regex_match(strSrc, cm, e, std::regex_constants::match_default);
+
+    std::vector<std::string> vec;
+    for (auto it : cm)
+    {
+        vec.push_back(it);
+    }
+    return vec;
 }

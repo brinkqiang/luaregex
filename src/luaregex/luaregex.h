@@ -30,7 +30,7 @@ class Cluaregex
 public:
     Cluaregex(sol::this_state L);
 
-    void OPrint(const std::string& strInfo);
+    std::vector<std::string> match(const std::string& strSrc, const std::string& reg);
 
 private:
     sol::state_view m_oState;

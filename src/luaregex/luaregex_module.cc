@@ -38,16 +38,12 @@ namespace lua_module_luaregex
         //    basic_regex::swap
         sol::state_view lua(L);
         sol::table module = lua.create_table();
-        module.new_usertype<std::regex>(
-            "regex",
-            sol::constructors<std::regex(const std::string& re)>()
+        module.new_usertype<Cluaregex>(
+            "luaregex",
+            sol::constructors<Cluaregex(sol::this_state L)>(),
+            "match", &Cluaregex::match
             );
 
-        module.new_usertype<std::cmatch>(
-            "cmatch",
-            sol::constructors<std::cmatch()>(),
-            "size", &std::cmatch::size
-            );
         return module;
     }
 }

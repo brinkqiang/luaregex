@@ -34,13 +34,15 @@ std::vector<std::string> Cluaregex::match(const std::string& strSrc, const std::
     std::regex e(reg);
 
     std::smatch cm;
-    std::regex_match(strSrc, cm, e, std::regex_constants::match_default);
-
     std::vector<std::string> vec;
-    for (auto it : cm)
+    std::string strData = strSrc;
+    for (; std::regex_match(strData, cm, e, std::regex_constants::match_default);)
     {
-        vec.push_back(it);
+        vec.push_back(cm.str());
+
+        strData = cm.suffix().str();
     }
+
     return vec;
 }
 

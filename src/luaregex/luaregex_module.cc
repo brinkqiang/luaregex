@@ -21,22 +21,35 @@
 
 #include "luaregex_module.h"
 #include "luaregex.h"
+#include <regex>
 
 namespace lua_module_luaregex
 {
     static sol::table require_api(sol::this_state L)
     {
+
+        //member functions :
+        //basic_regex::assign
+        //    basic_regex::flags
+        //    basic_regex::getloc
+        //    basic_regex::imbue
+        //    basic_regex::mark_count
+        //    basic_regex::operator=
+        //    basic_regex::swap
         sol::state_view lua(L);
         sol::table module = lua.create_table();
-        module.set_function("GPrint",&Cluaregex::GPrint);
-        module.new_usertype<Cluaregex>(
-            "luaregex",
-            sol::constructors<Cluaregex(sol::this_state)>(),
-            "OPrint", &Cluaregex::OPrint
+        module.new_usertype<std::regex>(
+            "regex",
+            sol::constructors<std::regex(const std::string& re)>()
             );
 
+        module.new_usertype<std::cmatch>(
+            "cmatch",
+            sol::constructors<std::cmatch()>(),
+            "size", &std::cmatch::size
+            );
         return module;
-    }    
+    }
 }
 
 LUA_API int luaopen_luaregex(lua_State* L)

@@ -32,7 +32,6 @@ public:
 
     void OPrint(const std::string& strInfo);
 
-    static void GPrint(const std::string& strInfo);
 private:
     sol::state_view m_oState;
 };

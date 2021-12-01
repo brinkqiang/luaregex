@@ -20,10 +20,10 @@
 // SOFTWARE.
 
 #include "luaregex.h"
-#include<iostream>
+#include <iostream>
 
 Cluaregex::Cluaregex(sol::this_state L)
-: m_oState(L)
+    : m_oState(L)
 {
 
 }
@@ -31,9 +31,4 @@ Cluaregex::Cluaregex(sol::this_state L)
 void Cluaregex::OPrint(const std::string& strInfo)
 {
     m_oState["print"].call(strInfo);
-}
-
-void Cluaregex::GPrint(const std::string& strInfo)
-{
-    std::cout << strInfo << std::endl;
 }

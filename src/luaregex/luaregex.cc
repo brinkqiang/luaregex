@@ -31,7 +31,7 @@ Cluaregex::Cluaregex(sol::this_state L)
 
 std::vector<std::string> Cluaregex::match(const std::string& strSrc, const std::string& reg)
 {
-    std::regex e(reg, std::regex::ECMAScript);
+    std::regex e(reg);
 
     std::smatch cm;
     std::regex_match(strSrc, cm, e, std::regex_constants::match_default);

@@ -32,6 +32,7 @@ public:
 
     std::vector<std::string> match(const std::string& strSrc, const std::string& reg);
 
+    std::vector<std::string> search(const std::string& strSrc, const std::string& reg);
 private:
     sol::state_view m_oState;
 };

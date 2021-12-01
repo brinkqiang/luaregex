@@ -41,7 +41,8 @@ namespace lua_module_luaregex
         module.new_usertype<Cluaregex>(
             "luaregex",
             sol::constructors<Cluaregex(sol::this_state L)>(),
-            "match", &Cluaregex::match
+            "match", &Cluaregex::match,
+            "search", &Cluaregex::search
             );
 
         return module;

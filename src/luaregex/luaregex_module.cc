@@ -27,15 +27,6 @@ namespace lua_module_luaregex
 {
     static sol::table require_api(sol::this_state L)
     {
-
-        //member functions :
-        //basic_regex::assign
-        //    basic_regex::flags
-        //    basic_regex::getloc
-        //    basic_regex::imbue
-        //    basic_regex::mark_count
-        //    basic_regex::operator=
-        //    basic_regex::swap
         sol::state_view lua(L);
         sol::table module = lua.create_table();
         module.new_usertype<Cluaregex>(
